@@ -1,0 +1,228 @@
+HTML
+1. What is the !DOCTYPE we place at the top of html file? Why we need it?
+    - !DOCTYPE is to tell the browser to expect what type of document. It is an instruction to the web browser about what version of HTML the page is written in so that it ensures the web page is parsed the same way by different web browsers.
+
+2. List some semantic tags in html5 (elements that clearly define its content)
+    - <form>
+    - <table>
+    - <nav>
+    - <main>
+
+3. Write a code snippet to achieve the requirements set up a link for user, user can click
+   the link and redirect user to the YouTube in the separate tab.
+    - <a href="www.youtube.com" target="_blank">YouTube</a>
+
+4. What is difference between block element and inline element?
+    - block element always starts at a new line and takes up the available full width, where inline element does not start on new line and takes up the space that are bounded by the width of the element. Block elements have top/bottom margin where inline elements do not. 
+
+CSS
+1. How many ways you can embed css code into html file?
+    - The first method is to use inline CSS which adds CSS properties directly into HTML elements.
+    e.g. <h1 style="color: green;">Hello World</h1>
+
+    - The second method is to use internal CSS which adds CSS in the head tag.
+    e.g.<!DOCTYPE html>
+        <html>
+            <head>
+                <style>
+                    h1 {
+                    color: maroon;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Heading 1</h1>
+            </body>
+        </html>
+
+    - The third method is to use external CSS which we need to reference it inside the <link> element.
+    e.g <!DOCTYPE html>
+        <html>
+            <head>
+                <link rel="stylesheet" href="mystyle.css">
+            </head>
+            <body>
+
+                <h1>This is a heading</h1>
+                <p>This is a paragraph.</p>
+
+            </body>
+        </html>
+
+2. What is css specificity? Place explain it in the desc order?
+    - CSS specificity allows us to determine whichever classes we declared in HTML elements have higher priority. The ones with higher priority will overwrite the lower ones. The latest CSS rule that is declared will overwrite the previous ones and for the same type of selector, the one that is more specific and nested will have higher priority.
+    - CSS specificity priority order (high to low)
+    e.g 1. !important
+        2. Inline styles
+        3. IDs
+        4. Classes, pseudo-classes
+        5. Elements, pseudo-elements
+
+3. What is pseudo element and pseudo class?
+    - Pseudo-elements are keywords of a selector that allows you to style a specfic part of the element. e.g "p::first-line{color: blue;}" will style the first line of a paragraph in blue.
+    - Pseudo-classes are keywords of a selector that allows you to style element based on the declared state. e.g "a:hover{color: red;}" will style the link in red when it is hovered.
+
+
+4. Write code snippets to make element center horizontally, vertically and both?
+    - Horizontally
+        .outer {
+            display: flex;
+            background-color: green;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+        }
+
+        .inner {
+            background-color: greenyellow;
+            width: 50vw;
+            height: 50vh;
+        }
+
+        <div class="outer">
+            <div class="inner"></div>
+        </div>
+
+    - Vertically
+        .outer {
+            display: flex;
+            background-color: green;
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .inner {
+            background-color: greenyellow;
+            width: 50vw;
+            height: 50vh;
+        }
+
+        <div class="outer">
+            <div class="inner"></div>
+        </div>   
+
+    - Both Horizontally and Vertically
+        .outer {
+            display: flex;
+            background-color: green;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inner {
+            background-color: greenyellow;
+            width: 50vw;
+            height: 50vh;
+        }
+
+        <div class="outer">
+            <div class="inner"></div>
+        </div>      
+
+5. What is margin collapse?
+    - Margin collapse happens when two block elements with adjacent vertical margins collides to share a general margin space. The size of the shared space will be determined by the larger margin number. 
+
+6. What's css box-sizing attributes?
+    - The CSS box-sizing attributes sets how the width and the height of an element is calculated. There are two kinds of attributes, the default value is content-box which the width and height only include the content but not the padding, margin, and border. The other value is border-box which includes the width and height of padding, border but not margin. 
+
+7. Css to hide HTML elements and their differences?
+    - The CSS "display:none" will not show the elements in the page and does not occupy space whereas the CSS "visibility:hidden" will keep the elements in the page and and does not show to the user but it will still occupy the space.
+
+8. What is css image sprites?
+    - CSS image sprites refers to combining multiple image file into a single image file. Then, we display different portions of the image based on the position of the image background This reduces the number of making server requests and saves bandwidth.
+
+JS:
+1. Please explain JS mechanism (sync and async code and event loop)
+    - Sync code runs in sequence where each operation must wait until the previous code is finished executing then only it can be run. Sync code is run in the call stack and it will be removed once each operation is completed. As for async code, it runs in parallel where it can be executed while sync code is still running. Examples of async code including promises, setTimeout rely on callback functions which executes when an async operations is done. These callbacks are placed in a callback queue. To ensure async code are executed in the call stack, the event loop is introduced to check whether the call stack is empty, it then checks if there is a callback function in the callback queue,  pulls the callback function from the queue and place it into the call stack to execute and the loop continues. 
+
+
+2. What is the difference between function declaration and function expression?
+    - The syntax of function declaration and function expression is different. 
+        e.g. Function declaration:
+             function foo() {
+                console.log("foo");
+             }
+        e.g. Function expression:
+             const greet = function greet() {
+                console.log("hello");
+             }
+    - The diffrence between function declaration and function expression is that function declarations are hoisted completely for use in the whole scope, meaning it will work even if we call the function before declaring it. For function expression, we cannot invoke the function before function expression is defined.
+
+
+3. Let vs const vs var?
+    - For var, how it differs from let and const is that variables declared in var are hoisted, where it is initialized as undefined before the code runs. For let and const, variables that are declared as let/const are blocked scope where they can be only accessed within the block they were declared. Unlike var, let/const are also hoisted but they are not initialized. For const, it does not allow updating variables nor re-declared. However, if we declared an object with const, we can update its properties.
+
+4. List ES6 features you know
+    - The introduction of let and const, where const cannot update variables nor re-declared but can update object properties declared as const. Unlike var, let and const are hoisted but not initialized where they have to be declared before using it.
+    - Arrow functions, they have simpler and shorter syntax. Also, arrow functions do not have its own "this" keyword and arguments, arrow functions inherit the "this" keyword context from their parent scope.
+    - Destructuring, it allows assigning properties of objects or arrays to variables. 
+        e.g. For example, let first = array[0];
+                          let second = array[1];
+             can be destructured as 
+                          let [first, second] = array;
+    - Strings literals introduced in ES6 improves code readability. 
+        e.g. For example, const firstName = "Jason";
+                          const lastName = "Yap";
+                          console.log("Hello " + firstName + " " + lastName);
+             can be rewritten in string literals as
+                          console.log(`Hello ${firstName} ${lastName}`);
+    - Spread syntax allows interables to be expanded, can be used when all elements of object or array need to be included in the new object or array.
+        e.g. const array = [1,2,3];
+             const newArray = [...array];
+             console.log(newArray); // [1,2,3]
+
+
+5. Function prototype methods, bind vs apply cs call?
+    - Methods like bind, apply, and call help us to change the "this" context of an invoking function. The difference between call and apply is that call passes arguments separately (e.g. call(obj, args1, args2)) whereas apply passes array as an argument list (e.g. apply(obj, [args1, args2])). Unlike apply and call, the bind method does not trigger the function right away but instead it returns a new function where its was bounded by the provided "this" context (e.g. const boundFunc = func.bind(obj)).
+
+
+6. How to deep copy object in JS?
+    - We can stringify the object into JSON object literals, then parse it back into a JS object and assign it to a new variable. 
+    - Use third party library called Lodash to deep copy objects using the cloneDeep method.
+        e.g. import "cloneDeep" from "lodash";
+             const obj = {name: "Jason"};
+             const deepCopyObj = cloneDeep(obj);
+    - Another intuitive way is to implement our own deep copy algorithm using DFS/recursive.
+
+7. Event bubbling vs Event Capturing ? What is Event Delegation?
+    - Event bubbling and event capturing are two ways of event delegation in the DOM tree. When a event handler was triggered, the capturing phase would first happen, where the event traverses down to the target element until it reaches the second phase "target phase" where the event arrives at the target element. By default, the capture option was set to false. The event bubbling is the third phase which bubbles up to its parent elements, where it first runs the handler of target element, then on its parents, and all the way up to its ancestors. 
+    - Event delegation is a way to efficiently handle events. Instead of adding event listeners to each similar element, we add an event listner to a common parent element and call an event with the use of ".target" property to perform DOM manipulation.
+
+
+8. What is Closure in JS?
+    - A closure is an inner function returned by an outer function that still has access to it's outer scope variables.
+
+
+function createIncrement() {
+let value = 0;
+function increment() {
+++value;
+console.log(value);
+}
+const msg1= `msg1: ${value}`;
+function log() {
+const msg2 =
+`msg2:${value}`;
+console.log(msg1);
+console.log(msg2);
+}
+return [increment, log];
+}
+
+const [increment, log] = createIncrement();
+const one = increment();
+const two = increment();
+console.log(one);
+console.log(two);
+log();
+
+What’s the console output for the above code?
+Write the output in order and error type if there are any
+    - Output: 1
+              2
+              msg1: 0
+              msg2:2
+              
